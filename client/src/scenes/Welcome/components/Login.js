@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import styled, { withTheme } from 'styled-components';
+import { useContext } from 'react';
+import styled from 'styled-components';
 import Form from '../../../global/components/Forms/Form';
 import Input from '../../../global/components/Forms/Input';
 import UserContext from '../../../global/Contexts/UserContext/Context';

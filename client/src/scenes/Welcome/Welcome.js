@@ -2,7 +2,6 @@ import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import heroImg from './heroImg.jpg';
 
 const HeroImg = styled.img`
     position: absolute;
@@ -21,7 +20,7 @@ function Welcome() {
 
     return (
         <>
-            <HeroImg src={heroImg} />
+            <HeroImg src={`${process.env.PUBLIC_URL}/heroImg.jpg`} />
             <Switch>
                 <Route path='/welcome/login' component={Login} />
                 <Route path='/welcome/signup' component={Signup} />
