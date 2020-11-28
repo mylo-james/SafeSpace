@@ -12,7 +12,7 @@ const StyNavBar = styled.nav`
     max-width: 100vw;
     height: 80px;
     padding: 0 20px;
-    box-shadow: 2px 3px 100px;
+    box-shadow: 7px 3px 10px rgba(0, 0, 0, 0.3);
     background-color: ${({ theme }) => theme.primary};
 
     .auth-buttons > button {

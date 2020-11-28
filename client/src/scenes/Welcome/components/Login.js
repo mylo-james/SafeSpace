@@ -33,6 +33,11 @@ function Login() {
         setUser(user);
     };
 
+    const demoInfo = {
+        email: 'demo@user.com',
+        password: 'Test@1234',
+    };
+
     return (
         <LoginDiv>
             <Form style={formStyle} submitButton={true} onSubmit={handleSubmit}>
@@ -49,6 +54,9 @@ function Login() {
                     name='password'
                     placeholder='Password'
                 />
+                <button type='button' onClick={() => handleSubmit(demoInfo)}>
+                    Demo
+                </button>
             </Form>
         </LoginDiv>
     );

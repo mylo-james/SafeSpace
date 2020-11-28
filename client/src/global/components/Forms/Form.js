@@ -1,5 +1,6 @@
 import { useState, cloneElement } from 'react';
 import styled from 'styled-components';
+import Input from './Input';
 
 const StyledForm = styled.form`
     display: flex;
@@ -26,7 +27,13 @@ export default function Form({ children, onSubmit, style = {}, submitButton }) {
         <StyledForm style={style} onSubmit={handleSubmit}>
             {Array.isArray(children)
                 ? children.map((child, i) =>
-                      cloneElement(child, { formFields, setFormFields, key: i })
+                      child.type === Input
+                          ? cloneElement(child, {
+                                formFields,
+                                setFormFields,
+                                key: i,
+                            })
+                          : child
                   )
                 : cloneElement(children, { formFields, setFormFields })}
             {submitButton && <button type='submit'>Submit</button>}

@@ -9,6 +9,7 @@ import AuthRoute from './global/components/Routes/AuthRoute';
 import Welcome from './scenes/Welcome/Welcome';
 import ProtectedRoute from './global/components/Routes/ProtectedRoute';
 import './reset.css';
+import './animations.css';
 import styled from 'styled-components';
 
 const Main = styled.main`

@@ -4,6 +4,7 @@
 }
 
 html {
+    width: 100vw;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
@@ -11,6 +12,20 @@ html {
 
 body {
     margin: 0;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 0.7em;
+    background: white;
+}
+body::-webkit-scrollbar-thumb {
+    background: #696969;
+    height: 30px;
+}
+
+body::-webkit-scrollbar-track-piece {
+    display: none;
 }
 
 main {
