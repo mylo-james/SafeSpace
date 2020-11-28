@@ -1,16 +1,16 @@
 from flask import Blueprint
-from backend.models import User #pylint: disable=import-error
+from ..models import User
 
-user_routes = Blueprint('users', __name__)
+bp = Blueprint('users', __name__, url_prefix="/api/users")
 
 
-@user_routes.route('/')
+@bp.route('/')
 def index():
     response = User.query.all()
     return {"users": [user.to_dict() for user in response]}
 
-@user_routes.route('/<int:id>', methods=['GET'])
+
+@bp.route('/<int:id>', methods=['GET'])
 def user_detail(id):
     user = User.query.filter(User.id == id).first()
     return user.to_dict()
-
