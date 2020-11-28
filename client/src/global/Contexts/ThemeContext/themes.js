@@ -1,5 +1,5 @@
 export const def = {
-    primary: 'green',
+    primary: '#46bbf1',
     secondary: 'blue',
     terinary: 'red',
     light: 'white',
@@ -7,7 +7,7 @@ export const def = {
 };
 
 export const dark = {
-    primary: '#006400',
+    primary: '#46bbf1',
     secondary: 'dark blue',
     terinary: 'dark red',
     light: 'white',

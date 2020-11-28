@@ -1,6 +1,12 @@
+* {
+    font-family: 'source-sans pro', sans-serif;
+    box-sizing: border-box;
+}
+
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -92,6 +98,10 @@ input {
 button,
 select {
     text-transform: none;
+}
+button:focus,
+input:focus {
+    outline: none;
 }
 
 button,

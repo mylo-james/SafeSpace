@@ -1,3 +1,4 @@
+#pylint: disable=no-member
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -8,18 +9,18 @@ with app.app_context():
   db.drop_all()
   db.create_all()
 
-  ian = User(username = 'Ian', email = 'ian@aa.io')
-  javier = User(username = 'Javier', email = 'javier@aa.io')
-  dean = User(username = 'Dean', email = 'dean@aa.io')
-  angela = User(username = 'Angela', email = 'angela@aa.io')
-  soonmi = User(username = 'Soon-Mi', email = 'soonmi@aa.io')
-  alissa = User(username = 'Alissa', email = 'alissa@aa.io')
+  demo = User(username = 'demo_user', email = 'demo@user.com', password="Test@1234")
+  mylo = User(username = 'mylo220', email = 'mjames@user.com', password="Test@1234")
+  geoff = User(username = 'geoff220', email = 'geoff@user.com', password="Test@1234")
+  emily = User(username = 'emily220', email = 'emily@user.com', password="Test@1234")
+  james = User(username = 'james220', email = 'james@user.com', password="Test@1234")
 
-  db.session.add(ian)
-  db.session.add(javier)
-  db.session.add(dean)
-  db.session.add(angela)
-  db.session.add(soonmi)
-  db.session.add(alissa)
+
+  db.session.add(demo)
+  db.session.add(mylo)
+  db.session.add(geoff)
+  db.session.add(emily)
+  db.session.add(james)
+
 
   db.session.commit()

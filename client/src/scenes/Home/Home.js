@@ -4,7 +4,7 @@ export default function Home(props) {
     const { user, setUser } = useContext(UserContext);
     return (
         <>
-            <h1>{user}</h1>
+            <h1>{user.email}</h1>
         </>
     );
 }
