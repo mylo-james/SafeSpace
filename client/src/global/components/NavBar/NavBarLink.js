@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
-import ThemeContext from '../Contexts/ThemeContext/Context';
 import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import ThemeContext from '../../Contexts/ThemeContext/Context';
 
 const StyNavBarLink = styled.button`
     height: 30px;
@@ -19,13 +19,24 @@ const StyNavBarLink = styled.button`
         background: ${({ theme }) => theme.light};
         color: ${({ theme }) => theme.primary};
     }
+
+    svg {
+        fill: white;
+    }
+    :hover svg {
+        fill: ${({ theme }) => theme.primary};
+    }
 `;
 
-function NavBarLink({ to, children }) {
+function NavBarLink({ to, children, onClick }) {
     const history = useHistory();
     const { theme } = useContext(ThemeContext);
     const handleClick = () => {
-        history.push(to);
+        if (to) {
+            history.push(to);
+        } else {
+            onClick();
+        }
     };
     return (
         <StyNavBarLink theme={theme} onClick={handleClick}>
