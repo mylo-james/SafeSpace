@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "upload": "heroku container:push web -a safespace-mjames && heroku container:release web -a safespace-mjames && heroku run -a safespace-mjames python -m database"
+    }
+}

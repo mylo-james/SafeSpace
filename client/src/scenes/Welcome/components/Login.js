@@ -25,7 +25,6 @@ function Login() {
     const { setUser } = useContext(UserContext);
 
     const handleSubmit = async (state) => {
-        console.log(JSON.stringify(state));
         const res = await fetch('/api/login', {
             method: 'POST',
             body: JSON.stringify(state),

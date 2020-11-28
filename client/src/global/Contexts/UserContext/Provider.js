@@ -26,7 +26,6 @@ export default function UserContextProvider({ children, setLoad }) {
                     return oldFetch(resource, init);
                 };
                 if (user) {
-                    console.log(user);
                     setUser(user);
                 }
                 setLoad(true);

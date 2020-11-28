@@ -10,7 +10,7 @@ with app.app_context():
   db.create_all()
 
   demo = User(username = 'demo_user', email = 'demo@user.com', password="Test@1234")
-  mylo = User(username = 'mylo220', email = 'mjames@user.com', password="Test@1234")
+  mylo = User(username = 'mylo220', email = 'mylo@user.com', password="Test@1234")
   geoff = User(username = 'geoff220', email = 'geoff@user.com', password="Test@1234")
   emily = User(username = 'emily220', email = 'emily@user.com', password="Test@1234")
   james = User(username = 'james220', email = 'james@user.com', password="Test@1234")
