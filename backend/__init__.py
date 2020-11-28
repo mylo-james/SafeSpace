@@ -1,3 +1,4 @@
+#pylint:disable=no-member
 import os
 from flask import Flask, render_template, request, session, jsonify
 from flask_cors import CORS
