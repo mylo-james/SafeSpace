@@ -35,12 +35,6 @@ function Signup() {
             <Form style={formStyle} submitButton={true} onSubmit={handleSubmit}>
                 <Input
                     required
-                    label='Username'
-                    name='username'
-                    placeholder='Username'
-                />
-                <Input
-                    required
                     label='Email'
                     name='email'
                     placeholder='Email'

@@ -17,41 +17,28 @@ with app.app_context():
     demo = User(
         first="Demo",
         last="User",
-        username="demo_user",
-        email="demo@user.com",
+        email="DemoUser@user.com",
         password="Test@1234",
     )
     mylo = User(
         first="Mylo",
         last="James",
-        username="mylo220",
-        email="mylo@user.com",
-        password="Test@1234",
-    )
-    geoff = User(
-        first="Geoffery",
-        last="Otieno",
-        username="geoff220",
-        email="geoff@user.com",
-        password="Test@1234",
-    )
-    emily = User(
-        first="Emily",
-        last="Burham",
-        username="emily220",
-        email="emily@user.com",
-        password="Test@1234",
-    )
-    james = User(
-        first="James",
-        last="Robertson",
-        username="james220",
-        email="james@user.com",
+        email="MyloJames@user.com",
         password="Test@1234",
     )
 
-    db.session.add(demo)
-    users = [mylo, geoff, emily, james]
+    users = [demo, mylo]
+
+    for i in range(1, 100):
+        first = fake.first_name()
+        last = fake.last_name()
+        user = User(
+            first=first,
+            last=last,
+            email=f"{first}{last}@user.com",
+            password="Test@1234",
+        )
+        users.append(user)
 
     for user in users:
         survey = Survey(

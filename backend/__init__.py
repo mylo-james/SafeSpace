@@ -1,16 +1,12 @@
 # pylint:disable=no-member
 from flask import Flask
-from backend.config import Config
-
-from backend.db import db
-
+from .config import Config
+from .db import db
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect
-
 from flask_login import LoginManager
-from backend.models import User
-
-from backend.routes import routes
+from .models import User
+from .routes import routes
 
 
 # Setup for Flask app
@@ -20,11 +16,9 @@ app.config.from_object(Config)
 # Connect db to app
 db.init_app(app)
 
-
 # Application Security
 CORS(app)
 CSRFProtect(app)
-
 
 # Initalize login Manager
 login_manager = LoginManager(app)

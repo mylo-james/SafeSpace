@@ -48,7 +48,7 @@ def signup():
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
 
-    username = request.json.get("username", None)
+   
     email = request.json.get("email", None)
     password = request.json.get("password", None)
     confirm = request.json.get("confirm", None)
@@ -56,7 +56,7 @@ def signup():
     if password != confirm:
         return jsonify({"msg": "Passwords do not match"}), 400
 
-    user = User(username=username, email=email, password=password)
+    user = User(email=email, password=password)
     db.session.add(user)
     db.session.commit()
     login_user(user)

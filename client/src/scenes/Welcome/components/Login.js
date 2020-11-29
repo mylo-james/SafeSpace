@@ -34,7 +34,7 @@ function Login() {
     };
 
     const demoInfo = {
-        email: 'demo@user.com',
+        email: 'DemoUser@user.com',
         password: 'Test@1234',
     };
 

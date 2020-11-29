@@ -11,7 +11,7 @@ class Survey(
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     bio = db.Column(db.String(2000))
     location = db.Column(db.Integer)
-    job = db.Column(db.String(50))
+    job = db.Column(db.String(500))
     salary = db.Column(db.Integer)
     clean = db.Column(db.Integer)
     smoke = db.Column(db.Integer)

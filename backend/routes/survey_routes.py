@@ -1,3 +1,4 @@
+# pylint:disable=no-member
 from flask import Blueprint, request
 from ..db import db
 from ..models import Survey, User

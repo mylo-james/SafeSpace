@@ -19,13 +19,12 @@ function UserProfile() {
 
     if (!loaded) return null;
 
-    const { first, last, email, username } = profile.user;
+    const { first, last, email } = profile.user;
 
     return (
         <>
             <h1>{`${first} ${last}`}</h1>
             <h2>{email}</h2>
-            <h3>{username}</h3>
             <ProfileInfo name='bio' label='About Me' />
             <ProfileInfo name='location' label='Location' />
             <ProfileInfo name='job' label='Occupation' />
