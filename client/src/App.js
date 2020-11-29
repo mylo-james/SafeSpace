@@ -38,7 +38,7 @@ function App() {
                                     component={Home}
                                 />
                                 <ProtectedRoute
-                                    path='/profile/:id'
+                                    path='/profile/:userId'
                                     exact
                                     component={Profile}
                                 />

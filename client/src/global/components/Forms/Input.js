@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
@@ -6,12 +7,23 @@ const StyledInput = styled.input`
 export default function Input({
     name,
     placeholder,
+    initValue,
     type,
     label,
     required,
     setFormFields,
     formFields,
 }) {
+    useEffect(() => {
+        initValue &&
+            setFormFields((state) => {
+                return {
+                    ...state,
+                    [name]: initValue,
+                };
+            });
+    }, [initValue, name, setFormFields]);
+
     const handleChange = (e) => {
         setFormFields((state) => {
             return {

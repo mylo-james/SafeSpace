@@ -29,6 +29,7 @@ class User(db.Model, UserMixin):
 
     def to_dict_survey(self):
         return {
+            "id": self.id,
             "first": self.first,
             "last": self.last,
             "username": self.username,

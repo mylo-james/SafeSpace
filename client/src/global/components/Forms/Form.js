@@ -8,7 +8,13 @@ const StyledForm = styled.form`
     justify-content: space-around;
 `;
 
-export default function Form({ children, onSubmit, style = {}, submitButton }) {
+export default function Form({
+    id,
+    children,
+    onSubmit,
+    style = {},
+    submitButton,
+}) {
     const [formFields, setFormFields] = useState({});
 
     const handleSubmit = (e) => {
@@ -24,7 +30,7 @@ export default function Form({ children, onSubmit, style = {}, submitButton }) {
     };
 
     return (
-        <StyledForm style={style} onSubmit={handleSubmit}>
+        <StyledForm id={id} style={style} onSubmit={handleSubmit}>
             {Array.isArray(children)
                 ? children.map((child, i) =>
                       child.type === Input
