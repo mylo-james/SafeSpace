@@ -6,10 +6,12 @@ from ..db import db
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
+    first = db.Column(db.String(40), nullable=False)
+    last = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     password_digest = db.Column(db.String(255), nullable=False)
 
@@ -17,21 +19,25 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         return {
-          "id": self.id,
-          "username": self.username,
-          "email": self.email,
-          "survey": self.survey.to_dict() if self.survey else None
+            "id": self.id,
+            "first": self.first,
+            "last": self.last,
+            "username": self.username,
+            "email": self.email,
+            "survey": self.survey.to_dict() if self.survey else None,
         }
 
     def to_dict_survey(self):
         return {
-          "username": self.username,
-          "email": self.email,
+            "first": self.first,
+            "last": self.last,
+            "username": self.username,
+            "email": self.email,
         }
 
     @property
     def password(self):
-        raise AttributeError('Password not readable.')
+        raise AttributeError("Password not readable.")
 
     @password.setter
     def password(self, password):

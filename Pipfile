@@ -22,9 +22,15 @@ Flask-JWT-Extended = "==3.24.1"
 flask-login = "*"
 flask-migrate = "*"
 faker = "*"
+pep8 = "*"
+autopep8 = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
+black = "*"
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
