@@ -25,7 +25,7 @@ RUN ["cp", "-r", "backend/static/static/media", "backend/static"]
 ENV FLASK_APP=backend
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
-ENV REACT_APP_BASE_URL=https://backend-mjames.herokuapp.com/
+ENV REACT_APP_BASE_URL=https://safespace-mjames.herokuapp.com/
 EXPOSE 8000
 
 # Run flask environment
