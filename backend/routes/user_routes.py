@@ -4,7 +4,7 @@ from ..models import User
 bp = Blueprint("users", __name__, url_prefix="/api/users")
 
 
-@bp.route("/")
+@bp.route("")
 def index():
     response = User.query.all()
     return {"users": [user.to_dict() for user in response]}
