@@ -1,28 +1,25 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Form from '../../../global/components/Forms/Form';
 import Input from '../../../global/components/Forms/Input';
-import ProfileContext from '../../../global/Contexts/ProfileContext/Context';
+import { editUser } from '../../../store/users';
+
 import EditButton from './EditButton';
 
-function EditInfo({ name, state }) {
-    const { profile, setProfile } = useContext(ProfileContext);
-    const info = profile[name];
+function EditInfo({ name, info }) {
+    const dispatch = useDispatch();
+
     const [edit, setEdit] = useState(false);
- 
 
     const toggleEdit = () => {
         edit ? setEdit(false) : setEdit(true);
     };
 
     const handleSubmit = async (state) => {
-        const res = await fetch(`/api/surveys/${profile.user.id}`, {
-            method: 'POST',
-            body: JSON.stringify(state),
-        });
-        const survey = await res.json();
-        setProfile(survey);
+        await dispatch(editUser(state));
         setEdit(false);
     };
+
     return (
         <>
             <EditButton edit={edit} name={name} toggleEdit={toggleEdit} />
@@ -31,7 +28,7 @@ function EditInfo({ name, state }) {
                     <Input name={name} initValue={info} />
                 </Form>
             ) : (
-                <div>{state}</div>
+                <div>{info}</div>
             )}
         </>
     );

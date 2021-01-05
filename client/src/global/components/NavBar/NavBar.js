@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import styled from 'styled-components';
-import ThemeContext from '../../Contexts/ThemeContext/Context';
 import Brand from './Brand';
 import NavBarButtons from './NavBarButtons';
 
@@ -12,7 +10,7 @@ const StyNavBar = styled.nav`
     height: 80px;
     padding: 0 20px;
     box-shadow: 7px 3px 10px rgba(0, 0, 0, 0.3);
-    background-color: ${({ theme }) => theme.primary};
+    background-color: blue;
 
     .nav-right > * {
         margin: 0 20px;
@@ -31,14 +29,12 @@ const StyNavBar = styled.nav`
 
     h1 {
         margin-left: 20px;
-        color: ${({ theme }) => theme.light};
+        color: red;
     }
 `;
 function NavBar() {
-    const { theme } = useContext(ThemeContext);
-
     return (
-        <StyNavBar theme={theme}>
+        <StyNavBar>
             <Brand />
             <NavBarButtons />
         </StyNavBar>

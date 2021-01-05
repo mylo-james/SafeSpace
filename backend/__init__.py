@@ -20,7 +20,7 @@ db.init_app(app)
 CORS(app)
 CSRFProtect(app)
 
-# Initalize login Manager
+# Initialize login Manager
 login_manager = LoginManager(app)
 
 

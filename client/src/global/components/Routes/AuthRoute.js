@@ -1,11 +1,10 @@
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import UserContext from '../../Contexts/UserContext/Context';
 
 function AuthRoute({ path, exact, component: Component, ...props }) {
-    const { user } = useContext(UserContext);
+    const userId = useSelector(({ users: { currentUserId } }) => currentUserId);
 
-    if (user) return <Redirect to="/" />;
+    if (userId) return <Redirect to='/' />;
 
     return <Route path={path} render={() => <Component {...props} />} />;
 }

@@ -1,8 +1,8 @@
-import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Form from '../../../global/components/Forms/Form';
 import Input from '../../../global/components/Forms/Input';
-import UserContext from '../../../global/Contexts/UserContext/Context';
+import { signup } from '../../../store/users';
 
 const SignupDiv = styled.div`
     display: flex;
@@ -21,14 +21,9 @@ const formStyle = {
 };
 
 function Signup() {
-    const { setUser } = useContext(UserContext);
+    const dispatch = useDispatch();
     const handleSubmit = async (state) => {
-        const res = await fetch('/api/signup', {
-            method: 'POST',
-            body: JSON.stringify(state),
-        });
-        const user = await res.json();
-        setUser(user);
+        dispatch(signup(state));
     };
     return (
         <SignupDiv>
@@ -38,6 +33,18 @@ function Signup() {
                     label='Email'
                     name='email'
                     placeholder='Email'
+                />
+                <Input
+                    required
+                    label='First Name'
+                    name='first'
+                    placeholder='First Name'
+                />
+                <Input
+                    required
+                    label='Last Name'
+                    name='last'
+                    placeholder='Last Name'
                 />
                 <Input
                     required

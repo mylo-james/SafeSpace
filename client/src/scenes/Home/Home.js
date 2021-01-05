@@ -1,28 +1,24 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import FeedContext from '../../global/Contexts/FeedContext/Context';
-import UserContext from '../../global/Contexts/UserContext/Context';
+import { getUsers } from '../../store/users';
+
 export default function Home() {
-    const { user: currentUser } = useContext(UserContext);
-    const { feed, setFeed } = useContext(FeedContext);
+    const dispatch = useDispatch();
+
     const [loaded, setLoad] = useState(false);
+    const { currentUserId } = useSelector(({ users }) => users);
+    const users = useSelector(({ users }) => Object.values(users.byId));
 
-    useEffect(() => {
-        (async () => {
-            const res = await fetch('/api/users');
-            const { users } = await res.json();
-            setFeed(users);
-            setLoad(true);
-        })();
-    }, [setFeed]);
-
+    useEffect(() => setLoad(dispatch(getUsers())), [dispatch]);
+    console.log(currentUserId);
     if (!loaded) return null;
 
     return (
         <>
-            {feed.map(
+            {users.map(
                 (user) =>
-                    currentUser.id !== user.id && (
+                    user.id !== currentUserId && (
                         <div key={`${user.id}feedmap`}>
                             <NavLink to={`/profile/${user.id}`}>
                                 {`${user.first} ${user.last}`}

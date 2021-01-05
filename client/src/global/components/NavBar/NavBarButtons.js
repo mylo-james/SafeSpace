@@ -1,26 +1,23 @@
-import { useContext } from 'react';
 import { FaUser } from 'react-icons/fa';
-import { useHistory } from 'react-router-dom';
-import UserContext from '../../Contexts/UserContext/Context';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../../store/users';
+
 import NavBarLink from './NavBarLink';
 
 function NavBarButtons() {
-    const history = useHistory();
-    const { user, setUser } = useContext(UserContext);
+    const dispatch = useDispatch();
 
-    const handleLogout = async () => {
-        const res = await fetch('/api/logout');
-        if (res.status === 200) {
-            setUser('');
-            history.push('/welcome');
-        }
+    const handleLogout = () => {
+        console.log('click');
+        dispatch(logout());
     };
+    const userId = useSelector(({ users: { currentUserId } }) => currentUserId);
 
     return (
         <>
-            {user ? (
+            {userId ? (
                 <div className='nav-right'>
-                    <NavBarLink to={`/profile/${user.id}`}>
+                    <NavBarLink to={`/profile/${userId}`}>
                         <FaUser />
                     </NavBarLink>
                     <NavBarLink onClick={handleLogout}>Logout</NavBarLink>

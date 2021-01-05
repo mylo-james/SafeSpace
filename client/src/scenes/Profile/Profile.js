@@ -1,25 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ProfileContext from '../../global/Contexts/ProfileContext/Context';
 import ProfileInfo from './components/ProfileInfo';
 
 function UserProfile() {
-    const { userId } = useParams();
-    const { profile, setProfile } = useContext(ProfileContext);
-    const [loaded, setLoaded] = useState(false);
+    const userId = Number.parseInt(useParams().userId);
+    const user = useSelector(({ users }) => users.byId[userId]);
 
-    useEffect(() => {
-        (async () => {
-            const res = await fetch(`/api/surveys/${userId}`);
-            const survey = await res.json();
-            setProfile(survey);
-            setLoaded(true);
-        })();
-    }, [userId, setProfile]);
-
-    if (!loaded) return null;
-
-    const { first, last, email } = profile.user;
+    const { first, last, email, survey } = user;
 
     return (
         <>

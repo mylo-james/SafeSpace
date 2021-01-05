@@ -2,28 +2,23 @@ export default function parseInfo(name, info, setState) {
     if (['smoke', 'drink', 'clean', 'social'].includes(name)) {
         switch (info) {
             case 1:
-                setState('Never');
-                break;
+                return 'Never';
             case 2:
-                setState('Almost Never');
-                break;
+                return 'Almost Never';
             case 3:
-                setState('Regularly');
-                break;
+                return 'Regularly';
             case 4:
-                setState('Often');
-                break;
+                return 'Often';
             default:
-                setState('Very Often');
-                break;
+                return 'Very Often';
         }
     } else if (name === 'salary') {
         const formatter = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
         });
-        setState(formatter.format(info));
+        return formatter.format(info);
     } else {
-        setState(info);
+        return info;
     }
 }

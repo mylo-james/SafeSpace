@@ -1,8 +1,10 @@
 import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Form from '../../../global/components/Forms/Form';
 import Input from '../../../global/components/Forms/Input';
 import UserContext from '../../../global/Contexts/UserContext/Context';
+import { login } from '../../../store/users';
 
 const LoginDiv = styled.div`
     display: flex;
@@ -22,16 +24,7 @@ const formStyle = {
 };
 
 function Login() {
-    const { setUser } = useContext(UserContext);
-
-    const handleSubmit = async (state) => {
-        const res = await fetch('/api/login', {
-            method: 'POST',
-            body: JSON.stringify(state),
-        });
-        const user = await res.json();
-        setUser(user);
-    };
+    const dispatch = useDispatch()
 
     const demoInfo = {
         email: 'DemoUser@user.com',
@@ -40,7 +33,7 @@ function Login() {
 
     return (
         <LoginDiv>
-            <Form style={formStyle} submitButton={true} onSubmit={handleSubmit}>
+            <Form style={formStyle} submitButton={true} onSubmit={(state)=>dispatch(login(state))}>
                 <Input
                     required
                     label='Email'
@@ -54,7 +47,7 @@ function Login() {
                     name='password'
                     placeholder='Password'
                 />
-                <button type='button' onClick={() => handleSubmit(demoInfo)}>
+                <button type='button' onClick={() => dispatch(login((demoInfo)))}>
                     Demo
                 </button>
             </Form>

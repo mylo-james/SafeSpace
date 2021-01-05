@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './scenes/Home/Home';
@@ -11,43 +11,38 @@ import './animations.css';
 import styled from 'styled-components';
 import NavBar from './global/components/NavBar/NavBar';
 import Profile from './scenes/Profile/Profile';
-import ContextProvider from './global/Contexts/ContextProvider';
+import { useDispatch } from 'react-redux';
+import { load } from './store/users';
 
 const Main = styled.main`
     min-height: calc(100vh - 80px);
 `;
 
 function App() {
+    const dispatch = useDispatch();
     const [loaded, setLoad] = useState(false);
+
+    useEffect(() => dispatch(load()).then((res) => setLoad(res)), [dispatch]);
 
     return (
         <BrowserRouter>
-            <ContextProvider setLoad={setLoad}>
-                {loaded && (
-                    <>
-                        <NavBar />
-                        <Main>
-                            <Switch>
-                                <AuthRoute
-                                    path='/welcome'
-                                    component={Welcome}
-                                />
-                                <ProtectedRoute
-                                    path='/'
-                                    exact
-                                    component={Home}
-                                />
-                                <ProtectedRoute
-                                    path='/profile/:userId'
-                                    exact
-                                    component={Profile}
-                                />
-                                <Route path='*' component={NotFound} />
-                            </Switch>
-                        </Main>
-                    </>
-                )}
-            </ContextProvider>
+            {loaded && (
+                <>
+                    <NavBar />
+                    <Main>
+                        <Switch>
+                            <AuthRoute path='/welcome' component={Welcome} />
+                            <ProtectedRoute path='/' exact component={Home} />
+                            <ProtectedRoute
+                                path='/profile/:userId'
+                                exact
+                                component={Profile}
+                            />
+                            <Route path='*' component={NotFound} />
+                        </Switch>
+                    </Main>
+                </>
+            )}
         </BrowserRouter>
     );
 }
