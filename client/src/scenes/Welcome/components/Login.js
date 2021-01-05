@@ -22,7 +22,7 @@ const formStyle = {
 };
 
 function Login() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const demoInfo = {
         email: 'DemoUser@user.com',
@@ -31,7 +31,10 @@ function Login() {
 
     return (
         <LoginDiv>
-            <Form style={formStyle} submitButton={true} onSubmit={(state)=>dispatch(login(state))}>
+            <Form
+                style={formStyle}
+                onSubmit={(state) => dispatch(login(state))}
+            >
                 <Input
                     required
                     label='Email'
@@ -45,7 +48,8 @@ function Login() {
                     name='password'
                     placeholder='Password'
                 />
-                <button type='button' onClick={() => dispatch(login((demoInfo)))}>
+                <button type='submit'>Submit</button>
+                <button type='button' onClick={() => dispatch(login(demoInfo))}>
                     Demo
                 </button>
             </Form>

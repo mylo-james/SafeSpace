@@ -11,7 +11,7 @@ export default function Home() {
     const users = useSelector(({ users }) => Object.values(users.byId));
 
     useEffect(() => setLoad(dispatch(getUsers())), [dispatch]);
-    console.log(currentUserId);
+
     if (!loaded) return null;
 
     return (

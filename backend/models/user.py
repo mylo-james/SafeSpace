@@ -1,6 +1,7 @@
 # pylint: disable=no-member
 from flask_jwt_extended import create_access_token, get_jwt_identity
 from flask_login import UserMixin
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..db import db
 
@@ -13,6 +14,8 @@ class User(db.Model, UserMixin):
     last = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     password_digest = db.Column(db.String(255), nullable=False)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.now,default=datetime.now )
+    created_at = db.Column(db.DateTime, default=datetime.now)
 
     survey = db.relationship("Survey", uselist=False, back_populates="user")
 

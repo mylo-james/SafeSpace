@@ -17,4 +17,6 @@ def index():
 @bp.route("/<int:id>", methods=["GET"])
 def user_detail(id):
     user = User.query.filter(User.id == id).first()
-    return user.to_dict()
+    byId = {}
+    byId[user.id] = user.to_dict()
+    return {"byId": byId}

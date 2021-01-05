@@ -51,6 +51,13 @@ export const getUsers = () => async (dispatch) => {
     dispatch(setUsers(users));
 };
 
+export const getUser = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/users/${userId}`);
+
+    const user = await res.json();
+    dispatch(setUsers(user));
+};
+
 export const login = (state) => async (dispatch) => {
     const res = await fetch('/api/login', {
         method: 'POST',

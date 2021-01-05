@@ -1,11 +1,17 @@
 # pylint: disable=no-member
 from ..db import db
+from datetime import datetime
 
 
 class Survey(
     db.Model,
 ):
     __tablename__ = "surveys"
+
+    def update(self):
+        time = datetime.now
+        print(self.get_current_parameters())
+        return time
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
@@ -17,6 +23,8 @@ class Survey(
     smoke = db.Column(db.Integer)
     drink = db.Column(db.Integer)
     social = db.Column(db.Integer)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.now, default=datetime.now)
+    created_at = db.Column(db.DateTime, default=datetime.now)
 
     user = db.relationship("User", back_populates="survey")
 

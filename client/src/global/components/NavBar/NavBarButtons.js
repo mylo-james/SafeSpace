@@ -1,15 +1,17 @@
 import { FaUser } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { logout } from '../../../store/users';
 
 import NavBarLink from './NavBarLink';
 
 function NavBarButtons() {
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    const handleLogout = () => {
-        console.log('click');
-        dispatch(logout());
+    const handleLogout = async () => {
+        await dispatch(logout());
+        history.push('/');
     };
     const userId = useSelector(({ users: { currentUserId } }) => currentUserId);
 
