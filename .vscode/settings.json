@@ -2,5 +2,8 @@
     "python.pythonPath": "/Users/mylojames/.local/share/virtualenvs/safespace-kflLSB2m/bin/python",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "cSpell.words": [
+        "signup"
+    ]
 }

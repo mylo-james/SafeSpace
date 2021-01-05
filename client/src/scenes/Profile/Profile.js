@@ -1,14 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import ProfileContext from '../../global/Contexts/ProfileContext/Context';
 import ProfileInfo from './components/ProfileInfo';
 
 function UserProfile() {
     const userId = Number.parseInt(useParams().userId);
     const user = useSelector(({ users }) => users.byId[userId]);
 
-    const { first, last, email, survey } = user;
+    const { first, last, email } = user;
 
     return (
         <>

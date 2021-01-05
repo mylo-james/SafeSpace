@@ -1,9 +1,7 @@
-import { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Form from '../../../global/components/Forms/Form';
 import Input from '../../../global/components/Forms/Input';
-import UserContext from '../../../global/Contexts/UserContext/Context';
 import { login } from '../../../store/users';
 
 const LoginDiv = styled.div`

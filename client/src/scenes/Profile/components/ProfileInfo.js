@@ -1,4 +1,3 @@
-import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import parseInfo from '../../../global/utils/parseInfo';
@@ -9,10 +8,6 @@ function ProfileInfo({ label, name }) {
     const { currentUserId, byId } = useSelector(({ users }) => users);
     const info = parseInfo(name, byId[userId].survey[name]);
     const self = userId === currentUserId;
-
-    // useEffect(() => {
-    //     parseInfo(name, info, setState);
-    // }, [name, info]);
 
     return (
         <>

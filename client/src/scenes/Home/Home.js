@@ -19,7 +19,7 @@ export default function Home() {
             {users.map(
                 (user) =>
                     user.id !== currentUserId && (
-                        <div key={`${user.id}feedmap`}>
+                        <div key={`user-${user.id}`}>
                             <NavLink to={`/profile/${user.id}`}>
                                 {`${user.first} ${user.last}`}
                             </NavLink>

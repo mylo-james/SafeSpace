@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Form from '../../../global/components/Forms/Form';
 import Input from '../../../global/components/Forms/Input';
 import { editUser } from '../../../store/users';
