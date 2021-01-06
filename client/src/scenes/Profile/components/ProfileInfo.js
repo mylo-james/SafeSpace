@@ -5,9 +5,9 @@ import EditInfo from './EditInfo';
 
 function ProfileInfo({ label, name }) {
     const userId = Number.parseInt(useParams().userId);
-    const { currentUserId, byId } = useSelector(({ users }) => users);
-    const info = parseInfo(name, byId[userId].survey[name]);
-    const self = userId === currentUserId;
+    const { id, survey } = useSelector(({ session }) => session);
+    const info = parseInfo(name, survey[name]);
+    const self = userId === id;
 
     return (
         <>

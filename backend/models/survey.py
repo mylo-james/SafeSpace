@@ -32,7 +32,6 @@ class Survey(
         return {
             "id": self.id,
             "userId": self.user_id,
-            "user": self.user.to_dict_survey(),
             "bio": self.bio,
             "location": self.location,
             "job": self.job,

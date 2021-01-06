@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     last = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     password_digest = db.Column(db.String(255), nullable=False)
-    updated_at = db.Column(db.DateTime, onupdate=datetime.now,default=datetime.now )
+    updated_at = db.Column(db.DateTime, onupdate=datetime.now, default=datetime.now)
     created_at = db.Column(db.DateTime, default=datetime.now)
 
     survey = db.relationship("Survey", uselist=False, back_populates="user")
@@ -26,14 +26,6 @@ class User(db.Model, UserMixin):
             "last": self.last,
             "email": self.email,
             "survey": self.survey.to_dict() if self.survey else None,
-        }
-
-    def to_dict_survey(self):
-        return {
-            "id": self.id,
-            "first": self.first,
-            "last": self.last,
-            "email": self.email,
         }
 
     @property

@@ -38,7 +38,7 @@ def login():
 
     if authenticated:
         login_user(user)
-        return user.to_dict()
+        return {"user": user.to_dict()}
 
     return {"errors": ["Invalid email or password"]}, 401
 
@@ -61,7 +61,7 @@ def signup():
     db.session.add(user)
     db.session.commit()
     login_user(user)
-    return user.to_dict()
+    return {"user": user.to_dict()}
 
 
 @bp.route("/logout", methods=["GET"])

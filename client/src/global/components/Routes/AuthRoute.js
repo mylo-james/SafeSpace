@@ -1,12 +1,16 @@
 import { useSelector } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 
-function AuthRoute({ path, exact, component: Component, ...props }) {
-    const userId = useSelector(({ users: { currentUserId } }) => currentUserId);
+function AuthRoute({ children, path, exact }) {
+    const userId = useSelector(({ session }) => session.id);
 
     if (userId) return <Redirect to='/' />;
 
-    return <Route path={path} render={() => <Component {...props} />} />;
+    return (
+        <Route exact={exact} path={path}>
+            {children}
+        </Route>
+    );
 }
 
 export default AuthRoute;

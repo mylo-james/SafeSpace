@@ -1,15 +1,22 @@
 import { useSelector } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
-import valid from '../../utils/valid'
+import { Redirect, Route } from 'react-router-dom';
+import valid from '../../utils/valid';
 
-function ProtectedRoute({ path, exact, component: Component, ...props }) {
-    const { currentUserId, byId } = useSelector(({ users }) => users);
+function ProtectedRoute({ children, exact, path }) {
+    const { userId, userSurvey } = useSelector(({ session }) => ({
+        userId: session.id,
+        userSurvey: session.survey,
+    }));
 
-    if (!currentUserId) return <Redirect to='/welcome' />;
+    if (!userId) return <Redirect to='/login' />;
 
-    if (!valid(byId[currentUserId].survey)) return <Redirect to='/survey' />;
+    if (!valid(userSurvey)) return <Redirect to='/survey' />;
 
-    return <Route path={path} render={() => <Component {...props} />} />;
+    return (
+        <Route exact={exact} path={path}>
+            {children}
+        </Route>
+    );
 }
 
 export default ProtectedRoute;

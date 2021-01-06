@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Form from '../../../global/components/Forms/Form';
 import Input from '../../../global/components/Forms/Input';
-import { editUser } from '../../../store/users';
-
-import EditButton from './EditButton';
+import { editUser } from '../../../store/session';
 
 function EditInfo({ name, info }) {
     const dispatch = useDispatch();
@@ -15,20 +13,28 @@ function EditInfo({ name, info }) {
         edit ? setEdit(false) : setEdit(true);
     };
 
-    const handleSubmit = async (state) => {
-        await dispatch(editUser(state));
+    const handleSubmit = (state) => {
+        dispatch(editUser(state));
         setEdit(false);
     };
 
     return (
         <>
-            <EditButton edit={edit} name={name} toggleEdit={toggleEdit} />
             {edit ? (
-                <Form id={`${name}EditForm`} onSubmit={handleSubmit}>
-                    <Input name={name} initValue={info} />
-                </Form>
+                <div>
+                    <Form
+                        submitButton={true}
+                        style={{ width: '200px' }}
+                        onSubmit={handleSubmit}
+                    >
+                        <Input name={name} initValue={info} />
+                    </Form>
+                </div>
             ) : (
-                <div>{info}</div>
+                <div>
+                    <div>{info}</div>
+                    <button onClick={toggleEdit}>Edit</button>
+                </div>
             )}
         </>
     );

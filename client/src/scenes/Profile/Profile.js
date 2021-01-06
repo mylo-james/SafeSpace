@@ -7,8 +7,9 @@ import ProfileInfo from './components/ProfileInfo';
 function UserProfile() {
     const dispatch = useDispatch();
     const userId = Number.parseInt(useParams().userId);
-
-    const user = useSelector(({ users }) => users.byId[userId]);
+    const { user } = useSelector(({ session, users }) => ({
+        user: { [session.id]: session, ...users }[userId],
+    }));
 
     useEffect(() => {
         if (!user) {

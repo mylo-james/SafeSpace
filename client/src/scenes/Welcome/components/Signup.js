@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Form from '../../../global/components/Forms/Form';
 import Input from '../../../global/components/Forms/Input';
-import { signup } from '../../../store/users';
+import { signup } from '../../../store/session';
 
 const SignupDiv = styled.div`
     display: flex;

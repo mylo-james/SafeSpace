@@ -2,14 +2,11 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Form from '../../../global/components/Forms/Form';
 import Input from '../../../global/components/Forms/Input';
-import { login } from '../../../store/users';
+import { login } from '../../../store/session';
 
 const LoginDiv = styled.div`
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: calc(100vh - 80px);
-    padding-top: 100px;
 `;
 
 const formStyle = {

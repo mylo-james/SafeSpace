@@ -8,7 +8,7 @@ export default function Home() {
 
     const [loaded, setLoad] = useState(false);
     const { currentUserId } = useSelector(({ users }) => users);
-    const users = useSelector(({ users }) => Object.values(users.byId));
+    const users = useSelector(({ users }) => Object.values(users));
 
     useEffect(() => setLoad(dispatch(getUsers())), [dispatch]);
 

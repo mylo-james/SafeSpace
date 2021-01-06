@@ -1,3 +1,5 @@
-export default function NotFound(props) {
-    return <h1>Not Found</h1>;
+import { NavLink } from 'react-router-dom';
+
+export default function NotFound() {
+    return <NavLink to='/'>Go Home</NavLink>;
 }
