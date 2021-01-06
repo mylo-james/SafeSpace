@@ -23,7 +23,7 @@ export default function Form({
             onSubmit(formFields);
         } else {
             console.log(
-                "Please add an onSumbit to your Form... This is your form's current state:"
+                "Please add an onSubmit to your Form... This is your form's current state:"
             );
             console.log(formFields);
         }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as theme from '../../global/style/themes';
+//import * as theme from '../../global/style/themes';
 
 export const WelcomeSty = styled.div`
     position: relative;
