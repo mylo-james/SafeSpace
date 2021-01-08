@@ -1,12 +1,12 @@
 import Brand from './Brand';
 import { NavBarSty } from './styles';
-import NavBarButtons from './Navigation';
+import Navigation from './Navigation';
 
 function NavBar() {
     return (
         <NavBarSty>
             <Brand />
-            <NavBarButtons />
+            <Navigation />
         </NavBarSty>
     );
 }

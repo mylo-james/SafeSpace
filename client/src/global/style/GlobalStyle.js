@@ -1,71 +1,69 @@
 import { useState } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { back, front, accent, cursor } from './themes';
+import { back, front, cursor } from './themes';
 import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
    ${reset}
 
+   html {
+        font-family: 'Dosis', sans-serif;
+       font-size: calc(20px + 6 * ((100vw - 320px) / 680));
+   }
+   * {
+        box-sizing: border-box;
+
+   }
+
+   body {
+       position: relative;
+       width: 100vw;
+       color: ${back};
+       cursor: ${cursor};
+       background-color: #FAFBF5;
+       overflow-x: hidden;
+   }
+
+
     button, a {
         font-size: 0.8em;
-        border: 3px ${front} solid;
-        padding: 10px;
-        background: none;
-        color: ${front}
+        padding: 5px 30px;
+        background: rgba(50,50,50,.2);
+        border: solid ${back} 1px;
+        border-radius: 5px;
+         text-decoration: none;
+         color: ${back}
     }
 
     button:hover, a:hover {
-        color: ${accent};
-        border: 3px ${accent} solid;
+        border: none;
         cursor: pointer;
+        color: ${back};
+        background: ${front};
     }
 
-   html {
-       width: 100vw;
-       cursor: ${cursor}
-   }
-   .app a {
-   
-       text-decoration: none;
-     
-   }
-  
-   .app {
-
-       width: 100vw;
-      
-       box-sizing: border-box;
-       font-family: 'Rubik', sans-serif;
-       color: ${back};
-       font-size: calc(16px + 4 * ((100vw - 320px) / 680));
-       overflow-y: scroll;
-       overflow-x: hidden;
-       scroll-behavior: smooth;
-       -webkit-overflow-scrolling: smooth;
-
-   }
-
+ 
    ::-webkit-scrollbar {
     width: 12px;
    }
  
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
     border-radius: 10px;
   }
  
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
   }
 
-  .app * {
-    box-sizing: border-box;
-   }
+  
 `;
 
 const GlobalStyleWrapper = ({ children }) => {
-    const [mode, setMode] = useState('dark');
+    const [mode, setMode] = useState('light');
     const [cursor, setCursor] = useState('default');
 
     return (

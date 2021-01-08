@@ -3,5 +3,11 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "python.formatting.provider": "black",
-    "cSpell.words": ["onupdate", "signup", "werkzeug"]
+    "cSpell.words": [
+        "Dosis",
+        "Heebo",
+        "onupdate",
+        "signup",
+        "werkzeug"
+    ]
 }

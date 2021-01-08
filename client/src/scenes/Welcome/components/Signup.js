@@ -17,7 +17,6 @@ const formStyle = {
     width: '50vw',
     padding: '30px',
     borderRadius: '20px',
-    color: 'white',
 };
 
 function Signup() {

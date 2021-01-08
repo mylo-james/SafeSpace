@@ -13,11 +13,11 @@ export const accent = theme('mode', {
     dark: '#4CC9F0',
 });
 export const front = theme('mode', {
-    light: '#010101',
+    light: 'black',
     dark: 'grey',
 });
 export const back = theme('mode', {
-    light: '#F8F8FF',
+    light: '#FAFBF5',
     dark: '#2D3142',
 });
 
